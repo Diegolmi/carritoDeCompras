@@ -9,6 +9,10 @@ let carrito = {}
 document.addEventListener("DOMContentLoaded", () => {
   fechApi();
   
+  if(localStorage.getItem("carrito")){
+    carrito = JSON.parse(localStorage.getItem("carrito"));
+    renderizarCarrito();
+  }
 });
  items.addEventListener("click", (e) => {
   btnAccion(e)
@@ -83,6 +87,8 @@ const renderizarCarrito = () => {
     fragment.appendChild(clone)
   })
 items.appendChild(fragment);
+localStorage.setItem("carrito", JSON.stringify(carrito)); // guardamos el carrito en el localStorage
+
 }
 
 const btnAccion = (e) => {
@@ -108,4 +114,4 @@ const btnAccion = (e) => {
 }
 
 
-
+localStorage("carrito", carrito); // guardamos el carrito en el localStorage
